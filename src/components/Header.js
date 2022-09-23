@@ -3,7 +3,7 @@ import Form from "./Form";
 
 function Header() {
 	return (
-		<header class="header">
+		<header className="header">
 			<h1>todos</h1>
 			<Form />
 		</header>
