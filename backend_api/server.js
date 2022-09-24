@@ -50,7 +50,7 @@ app.post("/todos", (req, res) => {
 
 app.patch("/todos/:id", (req, res) => {
 	const id = req.params.id;
-	const index = todos.findIndex((todo) => todo.id == id);
+	const index = todos.findIndex((todo) => todo.id === id);
 	const completed = Boolean(req.body.completed);
 	if (index > -1) {
 		todos[index].completed = completed;
@@ -60,7 +60,7 @@ app.patch("/todos/:id", (req, res) => {
 
 app.delete("/todos/:id", (req, res) => {
 	const id = req.params.id;
-	const index = todos.findIndex((todo) => todo.id == id);
+	const index = todos.findIndex((todo) => todo.id === id);
 	if (index > -1) {
 		todos.splice(index, 1);
 	}
