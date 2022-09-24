@@ -12,7 +12,7 @@ import Loading from "./Loading";
 
 function TodoList() {
 	const filteredTodos = useSelector(selectFilteredTodos);
-	// console.log(filteredTodos);
+	console.log(filteredTodos);
 	const isLoading = useSelector((state) => state.todos.isLoading);
 	const error = useSelector((state) => state.todos.error);
 	const dispatch = useDispatch();
