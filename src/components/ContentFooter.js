@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {
 	changeActiveFilter,
 	clearCompleted,
+	selectFilteredTodos,
 } from "./../context/todos/todosSlice";
 
 function ContentFooter() {
-	const items = useSelector((state) => state.todos.items);
+	const items = useSelector(selectFilteredTodos);
 	const itemsLeft = items.filter((item) => !item.completed);
 
 	const activeFilter = useSelector((state) => state.todos.activeFilter);
@@ -16,6 +17,7 @@ function ContentFooter() {
 	return (
 		<footer className="footer">
 			<span className="todo-count">
+				{/* //TODO filtered(all,active,completed).length */}
 				<strong>{itemsLeft.length} </strong>
 				item{itemsLeft.length > 1 && "s"} left
 			</span>
