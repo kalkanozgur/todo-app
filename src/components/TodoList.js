@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
 	toggle,
 	destroy,
 	selectFilteredTodos,
+	getTodosAsync,
 } from "./../context/todos/todosSlice";
+import Error from "./Error";
+import Loading from "./Loading";
 
 function TodoList() {
 	const filteredTodos = useSelector(selectFilteredTodos);
 	// console.log(filteredTodos);
+	const isLoading = useSelector((state) => state.todos.isLoading);
+	const error = useSelector((state) => state.todos.error);
 	const dispatch = useDispatch();
 
 	const handleDestroy = (id) => {
@@ -17,6 +22,16 @@ function TodoList() {
 			dispatch(destroy(id));
 		}
 	};
+	useEffect(() => {
+		dispatch(getTodosAsync());
+	}, [dispatch]);
+
+	if (isLoading) {
+		return <Loading />;
+	}
+	if (error) {
+		return <Error message={error} />;
+	}
 
 	return (
 		<>
