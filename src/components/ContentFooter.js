@@ -5,13 +5,14 @@ import {
 	changeActiveFilter,
 	clearCompleted,
 	selectFilteredTodos,
+	selectActiveFilter,
 } from "./../context/todos/todosSlice";
 
 function ContentFooter() {
 	const items = useSelector(selectFilteredTodos);
 	const itemsLeft = items.filter((item) => !item.completed);
 
-	const activeFilter = useSelector((state) => state.todos.activeFilter);
+	const activeFilter = useSelector(selectActiveFilter);
 	const dispatch = useDispatch();
 
 	return (
