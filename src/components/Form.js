@@ -9,12 +9,13 @@ function Form() {
 	const dispatch = useDispatch();
 	const [title, setTitle] = useState("");
 	const handleSubmit = (e) => {
+		if (!title) return;
+
 		e.preventDefault();
 		dispatch(addTodo({ id: nanoid(), title, completed: false }));
 	};
 	return (
 		<form onSubmit={handleSubmit}>
-			{title}
 			<input
 				className="new-todo"
 				placeholder="What needs to be done?"
